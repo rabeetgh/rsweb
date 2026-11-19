@@ -1,234 +1,565 @@
 <!DOCTYPE html>
-<html>
-<title>ESTCMS</title>
-<meta charset="UTF-8">
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Rabeet Singh | Electronic Structure & Materials</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="keywords" content="Rabeet Singh, density functional theory, electronic structure, computational materials, physics, BHU">
 
-<meta name="keywords" content="Rabeet Singh, density functional theory, exchange-correlation, Kohn-Sham equation, Hartree-Fock">
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<!--<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css"> -->
-<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
-<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <!-- MathJax (optional if you show equations) -->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script id="MathJax-script" async
-          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-</script>
-
+          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <style>
-html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
+  body{
+    font-family: system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    background:#007399;          /* slightly darker light gray for page */
+    color:#111827;               /* near-black text */
+  }
+  a{color:#0d6efd}
+  a:hover{color:#0b5ed7}
+
+  #publications .fw-semibold {
+    font-size: 0.98rem;
+  }
+
+  #publications .list-group-item {
+    border-radius: .35rem;
+    margin-bottom: .35rem;
+    transition: background-color .15s ease, box-shadow .15s ease, transform .1s ease;
+  }
+  #publications .list-group-item:hover {
+    background-color: #f8f9fa; /* light gray */
+    box-shadow: 0 .15rem .6rem rgba(0, 0, 0, 0.06);
+    transform: translateY(-1px);
+  }
+
+
+.carousel-item .card-title{
+  font-size:.95rem;
+}
+.carousel-item .card-img-top{
+  height:160px;
+  object-fit:cover;
+}
+
+  /* Navbar: white with dark text for max readability */
+  .navbar{
+    background:white;
+    border-bottom:1px solid #d1d5db;
+  }
+  .navbar-brand span{
+    font-weight:600;
+    letter-spacing:.04em;
+    color:#111827;
+  }
+  .nav-link{
+    font-weight:500;
+    letter-spacing:.03em;
+    color:#374151 !important;
+  }
+  .nav-link:hover{
+    color:#111827 !important;
+  }
+
+  /* Hero/Profile section */
+  .hero-section{
+    padding:120px 0 80px;
+  }
+  .hero-card{
+    background:#ffffff;
+    border:1px solid #d1d5db;
+    box-shadow:0 16px 30px rgba(15,23,42,.08);
+  }
+  .hero-avatar{
+    width:140px;
+    height:140px;
+    border-radius:50%;
+    object-fit:cover;
+    box-shadow:0 8px 20px rgba(15,23,42,.18);
+    border:3px solid #e5e7eb;
+  }
+  .hero-name{
+    font-size:1.9rem;
+    font-weight:700;
+    color:#111827;
+  }
+  .hero-title{
+    font-size:1.05rem;
+    text-transform:uppercase;
+    letter-spacing:.15em;
+    color:#4b5563;
+  }
+  .hero-badge{
+    font-size:.8rem;
+    border-radius:999px;
+    padding:4px 10px;
+    background:#dbeafe;
+    border:1px solid #93c5fd;
+    color:#1d4ed8;
+  }
+
+  .tag-pill{
+    display:inline-block;
+    border-radius:999px;
+    padding:6px 12px;
+    margin:3px;
+    font-size:.82rem;
+    background:#e0f2fe;
+    border:1px solid #93c5fd;
+    color:#1d4ed8;
+  }
+
+  /* Section headers */
+  .section-title{
+    font-size:1.4rem;
+    font-weight:600;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    color:#111827;
+  }
+  .section-subtitle{
+    font-size:.9rem;
+    color:#4b5563;
+  }
+
+  /* Generic soft card */
+  .card-soft{
+    background:#ffffff;
+    border:1px solid #d1d5db;
+    box-shadow:0 10px 24px rgba(15,23,42,.06);
+  }
+
+  /* PhD / collaborator list */
+  .avatar-sm{
+    width:56px;
+    height:56px;
+    border-radius:50%;
+    object-fit:cover;
+  }
+  .list-hover-item{
+    transition:transform .18s ease,box-shadow .18s ease,background .18s ease;
+    border-radius:.75rem;
+  }
+  .list-hover-item:hover{
+    background:#f3f4f6;
+    transform:translateY(-2px);
+    box-shadow:0 10px 24px rgba(15,23,42,.08);
+  }
+
+  /* Publications */
+  .pub-year{
+    font-size:.8rem;
+    text-transform:uppercase;
+    letter-spacing:.16em;
+    color:#6b7280;
+  }
+  .pub-title{
+    font-weight:600;
+    color:#111827;
+  }
+  .pub-journal{
+    font-size:.9rem;
+    color:#1d4ed8;
+  }
+
+  /* Footer */
+  footer{
+    border-top:1px solid #d1d5db;
+    background:#ffffff;
+    color:#4b5563;
+  }
+.feature-card {
+  background-color: #f5f7fb;
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem 1.0rem;
+  height: 100%;
+  position: relative;
+  transition: all 0.25s ease;   /* smooth hover */
+}
+
+.feature-card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 10px;
+  bottom: 10px;
+  width: 6px;
+  border-radius: 4px;
+  background-color: #f44336;
+  transition: background-color 0.25s ease;
+}
+
+.feature-card:hover {
+  background-color: #ffffff;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);  /* hover shadow */
+  transform: translateY(-4px);                  /* small lift */
+}
+
+.feature-card:hover::before {
+  background-color: #ff7043;                    /* lighter red on hover */
+}
+  
 </style>
-<body style="background-color:#00203FFF">
 
-<!-- Navbar -->
-<div class="w3-top">
- <div class="w3-bar w3-theme-d2 w3-left-align w3-large">
-  <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-theme-d2" href="javascript:void(0);" onclick="openNav()"><i class="fa fa-bars"></i></a>
-  <a href="#" class="w3-bar-item w3-button w3-padding-large w3-theme-d2"><img src="images/logo.png" class="w3-circle" style="height:80px;width:60px;background-color:#EEA47FFF" alt="Avatar"></a>
-  <a href="#" class="w3-bar-item w3-button w3-padding-large w3-theme-d2" style="margin-top:20px">Research</a>
-  <a href="#pubs" class="w3-bar-item w3-button w3-padding-large w3-theme-d2" style="margin-top:20px">Publications</a>
+</head>
+<body>
 
-  <a href="#" class="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-theme-d2">
-    <img src="images/logo.png" class="w3-circle" style="height:80px;width:60px;background-color:#EEA47FFF" alt="Avatar">
-  </a>
- </div>
-</div>
-
-<!-- Navbar on small screens
-<div id="navDemo" class="w3-bar-block w3-theme-d2 w3-hide w3-hide-large w3-hide-medium w3-large">
-  <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 1</a>
-  <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 2</a>
-  <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 3</a>
-  <a href="#" class="w3-bar-item w3-button w3-padding-large">My Profile</a>
-</div> -->
-
-<!-- Page Container -->
-<div class="w3-container w3-content" style="max-width:1400px;margin-top:120px">    
-  <!-- The Grid -->
-  <div class="w3-row">
-    <!-- Left Column -->
-    <div class="w3-col m3">
-      <!-- Profile -->
-      <div class="w3-card w3-round w3-black">
-        <div class="w3-container w3-theme-grey">
-         <h4 class="w3-center">Rabeet Singh</h4>
-         <p class="w3-center"><img src="images/rabeet.jpg" class="w3-circle" style="height:126px;width:126px" alt="Avatar"></p>
-         <hr>
-         <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-blue"></i> Assistant Professor</p>
-	 <p><i class="fa fa-home fa-fw w3-margin-right w3-text-blue"></i><a href="https://bhu.ac.in">Banaras Hindu University</a></p>
-	 <p><i class="fa fa-envelope fa-fw w3-margin-right w3-text-blue"></i> <a href="rabeet@bhu.ac.in">rabeet@bhu.ac.in</a></p>
-	</div>
-
-	<div class="w3-container">
-	 <p> <a class="w3-theme-l1 w3-padding" href="http://orcid.org/0000-0001-5657-057X">ORCID iD</a> </p>
-	 <p><a class="w3-theme-l1 w3-padding" href="https://scholar.google.co.in/citations?user=8EUlz1QAAAAJ&hl=en">Google Scholar</a> </p>
-	 <p> <a class="w3-theme-l1 w3-padding" href="https://www.researchgate.net/profile/Rabeet_Singh">ResearchGate</a> </p>
-	 <p> <a class="w3-theme-l1 w3-padding" href="https://github.com/rabeetgh">github</a> </p>
-	</div>
-      </div>
-      <br>
-      
-      <!-- Accordion -->
-      <div class="w3-card w3-round">
-        <div class="w3-white">
-          <button onclick="myFunction('Demo2')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa-fw w3-margin-right"></i>Databases</button>
-          <div id="Demo2" class="w3-hide w3-theme-l1 w3-container">
-  <a class="w3-bar-item w3-button w3-hover-black w3-text-blue" target="blank_"
-      href="https://www.chemie.uni-bonn.de/pctc/mulliken-center/software/GMTKN/gmtkn">GMTKN database of S. Grimme </a></br>
-  <a class="w3-bar-item w3-button w3-hover-black w3-text-blue" target="blank_"
-     href="https://materialsproject.org">The Materials Project</a> </br>
-  <a class="w3-bar-item w3-button w3-hover-black w3-text-blue" target="blank_"
-      href="https://comp.chem.umn.edu/db/">Minnesota Database</a> </br>
-  <a class="w3-bar-item w3-button w3-hover-black w3-text-blue" target="blank_"
-      href="http://www.begdb.com/">BEGDB Database</a> </br>
-  <a class="w3-bar-item w3-button w3-hover-black w3-text-blue" target="blank_"
-      href="http://schooner.chem.dal.ca/wiki/Johnson_Group_Wiki">Erin Johnson's group</a> </br>
-  <a class="w3-bar-item w3-button w3-hover-black w3-text-blue" target="blank_"
-      href="http://www.crystallography.net/cod/">Crystallography Open Database</a> </br>
-  <a class="w3-bar-item w3-button w3-hover-black w3-text-blue" target="blank_"
-      href="https://www.nomad-coe.eu">NOMAD</a> 
-</div>
-
-<button onclick="myFunction('Demo4')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa-fw w3-margin-right"></i>Codes</button>
-<div id="Demo4" class="w3-hide w3-theme-l1 w3-container">
-<a class="w3-bar-item w3-button w3-hover-black w3-text-blue" target="blank_"
-      href="https://wiki.fysik.dtu.dk/ase/">Atomic Simulation Environment</a></br>
-<a class="w3-bar-item w3-button w3-hover-black w3-text-blue" target="blank_"
-      href="https://data.mendeley.com/journal/00104655?"> Library for several useful codes</a> </br>
-
-</div>
-
-<button onclick="myFunction('Demo5')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa-fw w3-margin-right"></i>Programming</button>
-<div id="Demo5" class="w3-hide w3-theme-l1 w3-container">
-  <a class="w3-bar-item w3-button w3-hover-black w3-text-blue" target="blank_"
-      href="http://fortranwiki.org/fortran/show/Tutorials">Fortran tutorials</a> </br>
-  <a class="w3-bar-item w3-button w3-hover-black w3-text-blue" target="blank_"
-      href="https://www.w3schools.com/">Learning HTML</a> 
-</div>
-
-<button onclick="myFunction('Demo3')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa-fw w3-margin-right"></i>Plotting Tools</button>
-          <div id="Demo3" class="w3-hide w3-theme-l1 w3-container">
-  <a class="w3-bar-item w3-button w3-hover-black w3-text-blue" target="blank_"
-    href="http://www.gnuplot.info/">Gnuplot</a> </br>
-  <a class="w3-bar-item w3-button w3-hover-black w3-text-blue" target="blank_"
-    href="http://pgfplots.sourceforge.net/gallery.html">Pgfplot gallery</a> 
-	  </div>
-
-
-<button onclick="myFunction('Demo6')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa-fw w3-margin-right"></i>Important Links</button>
-<div id="Demo6" class="w3-hide w3-theme-l1 w3-container">
-  <a class="w3-bar-item w3-button w3-hover-black w3-text-blue" target="blank_"
-      href="https://stackexchange.com/">Stack Exchange</a> </br>
-  <a class="w3-bar-item w3-button w3-hover-black w3-text-blue" target="blank_"
-      href="https://www.quora.com">Quora</a> </br>
-  <a class="w3-bar-item w3-button w3-hover-black w3-text-blue" target="blank_"
-      href="https://blog.floydhub.com/best-machine-learning-books/">Machine Learning Books</a> </br>
- <a class="w3-bar-item w3-button w3-hover-black w3-text-blue" target="blank_" href="https://cassi.cas.org/"> Journal Abbreviations </a> </br>
-</div>
-        </div>      
-      </div>
-      <br>
-      
-    <!-- End Left Column -->
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg border-bottom border-secondary fixed-top">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center" href="#">
+      <img src="images/logo.png" alt="BHU" class="me-2 rounded-circle" style="width:42px;height:42px;object-fit:cover;">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+            aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mainNav">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link" href="#research">Research</a></li>
+        <li class="nav-item"><a class="nav-link" href="#students">PhD Students</a></li>
+        <li class="nav-item"><a class="nav-link" href="#publications">Publications</a></li>
+      </ul>
     </div>
-    
-    <!-- Middle Column -->
-    <div class="w3-col m7">
-      <h2 id="rese" align="center" class="w3-border w3-text-teal">Research interests</h2>
-      <div style="background-color:#EEA47FFF">
-          <div class="w3-padding w3-card w3-round w3-center">
-		    <span class="w3-tag w3-huge w3-padding" style="margin-right:10px"> <h3>Electronic Structure Theory</h3></span>
-		    <span class="w3-tag w3-huge w3-padding"> <h3>Computational Material Science</h3></span>
-		    <span class="w3-tag w3-huge w3-padding" style="margin-top:12px"> <h3>Machine Learning for Electronic Structure Problems</h3></span>
+  </div>
+</nav>
+
+<!-- HERO / PROFILE -->
+<section class="hero-section">
+  <div class="container">
+    <div class="row g-4 align-items-stretch">
+      <!-- Profile -->
+      <div class="col-lg-3">
+        <div class="card hero-card h-100 p-4">
+          <div class="text-center mb-3">
+            <img src="./rs.jpeg" alt="Rabeet Singh" class="hero-avatar mb-4">
+            <h3>Dr. Rabeet Singh</h3>
+            <span class="hero-badge">
+              <i class="fa-solid fa-atom me-1"></i> Assistant Professor · Department of Physics
+            </span>
+          </div>
+          <div class="mb-3 small text-secondary">
+            <i class="fa-solid fa-location-dot me-2 text-info"></i>Banaras Hindu University, Varanasi, India
+          </div>
+          <div class="mb-2 small">
+            <i class="fa-solid fa-envelope me-2 text-info"></i>
+            <a href="mailto:rabeet@bhu.ac.in">rabeet@bhu.ac.in</a>
+          </div>
+          <div class="mb-4 small">
+            <i class="fa-solid fa-globe me-2 text-info"></i>
+            <a href="https://bhu.ac.in" target="_blank" rel="noopener">bhu.ac.in</a>
+          </div>
+          <div class="mb-4 small">
+            <a href="http://orcid.org/0000-0001-5657-057X" target="_blank" rel="noopener">
+              <i class="fa-brands fa-orcid me-2 text-info"></i>ORCID
+            </a>
+          </div>
+
+          <div class="mb-4 small">
+            <a href="https://scholar.google.co.in/citations?user=8EUlz1QAAAAJ&hl=en" target="_blank" rel="noopener"
+               >
+              <i class="fa-brands fa-google me-2 text-info"></i>Google Scholar
+            </a>
+          </div>
+          <div class="mb-4 small">
+            <a href="https://www.researchgate.net/profile/Rabeet_Singh" target="_blank" rel="noopener"
+               >
+              <i class="fa-brands fa-researchgate me-2 text-info"></i>ResearchGate
+            </a>
+          </div>
+          <div class="mb-4 small">
+            <a href="https://github.com/rabeetgh" target="_blank" rel="noopener">
+              <i class="fa-brands fa-github me-2 text-info"></i>GitHub
+            </a>
+          </div>
+
+          <div class="border-top border-secondary pt-3 small text-secondary">
+          <div class="card-header bg-transparent border-0 pb-0">
+            <div id="students" class="section-title">PhD Students</div>
+            <div class="section-subtitle">Current supervision</div>
+          </div>
+          <div class="card-body pt-3">
+            <div class="list-group list-group-flush">
+              <a href="#" class="list-group-item bg-transparent  border-0 px-0 py-2 list-hover-item">
+                <div class="d-flex align-items-center">
+                  <img src="images/deepak.jpg" alt="Deepak Singh" class="avatar-sm me-3">
+                  <div>
+                    <div class="fw-semibold">Deepak Singh</div>
+                    <div class="small text-secondary">
+                      Machine Learning for Electronic Structure Problems
+                    </div>
+                  </div>
+                </div>
+              </a>
+              <a href="#" class="list-group-item bg-transparent border-0 px-2 py-2 list-hover-item">
+                <div class="d-flex align-items-center">
+                  <img src="./binoy_mahto.jpg" alt="Binoy Mahto" class="rounded px-1 w-25">
+                  <div>
+                    <div class="fw-semibold">Binoy Mahto</div>
+                    <div class="small text-secondary">
+                      Electronic Structure Theory of Quantum Confined Systems
+                    </div>
+                  </div>
+                </div>
+              </a>
+          </div>
+        </div>
+          </div>
         </div>
       </div>
-     
-<!--<div class="w3-theme-l1 w3-border w3-padding" align="justify">
-Most of the properties we study using quantum mechanics are the functionals of wavefunction which is obtained by solving
-the Schrodinger equation. It should be noted here that the problem we face for solving a quantum-mechanical pro
-here is to working with 3N (for N electron system) dimensional problem which is practically impossible. On the other hand, 
-in density functional theory we have to minimize the density functional, and so we work only on three dimensional problem 
-to find the ground state density. The challenge is that part of the energy density functional known as exchange-correlation
-is not known. This is the main problem we take in the development of density functional theory. We perform the studies for 
-testing the performance of existing exchange-correlation functionals.   
 
-</div>--> 
+      <!-- Research summary & topics -->
+      <div class="col-lg-9">
+        <div class="card card-soft h-100 p-4">
+          <div class="d-flex justify-content-between align-items-baseline mb-3">
+            <div>
+              <div class="section-title" id="research">Research</div>
+              <div class="section-subtitle">Electronic structure theory · Density functional theory · Computational materials</div>
+            </div>
+          </div>
 
-<div class="w3-theme-l1">
-<h2 id="pubs" align="center" class="w3-border w3-text-teal">Publications</h2>
-
-<ul class="w3-ul w3-border w3-hover-shadow">
-<li class="w3-hover-white">Ashish Kumar, Rabeet Singh, and Manoj K. Harbola, "Accurate effective potential for density amplitude and the corresponding Kohn-Sham exchange-correlation potential calculated from approximate." In: <a class="w3-text-blue" href="https://doi.org/10.1088/1361-6455/ab9768">J. Phys. B: Atom. Mol. Opt. Phys, 53 165002(2020)</a> </li>
-<li class="w3-hover-white">Rabeet Singh, Ashish Kumar, Manoj K. Harbola, and Prasanjit Samal, "Semianalytical wavefunctions and Kohn-Sham exchange-correlation potentials for two-electron atomic systems in two-dimensions." In: <a class="w3-text-blue" href="https://doi.org/10.1088/1361-6455/ab56be">J. Phys. B: Atom. Mol. Opt. Phys. 53, 035001(2020)</a> </li>
-<li class="w3-hover-white">Rabeet Singh, Bikash Patra, Abhilash Patra, Manoj K. Harbola, and Prasanjit Samal, "Adiabatic connection in density functional theory in two-dimensions: A semi-analytic wavefunction based study for two-electron atomic systems." In: <a class="w3-text-blue" href="https://doi.org/10.1063/1.5120853">J. Chem. Phys. 151, 204104(2019)</a> </li>
-<li class="w3-hover-white">Ashish Kumar, Rabeet Singh, and Monoj K. Harbola, "Universal nature of different methods of obtaining the exact Kohn-Sham exchange-correlation potential for a given density." In: <a class="w3-text-blue" href="https://doi.org/10.1088/1361-6455/ab04e8">J. Phys. B: Atom. Mol. Opt. Phys. 52, 075007(2019)</a> </li>
-<li class="w3-hover-white">Rabeet Singh and Manoj K. Harbola, "A study of accurate exchange-correlation functionals through adiabatic connection." In: <a class="w3-text-blue" href="http://aip.scitation.org/doi/10.1063/1.4995698">J. Chem. Phys. 147, 144105(2017)</a> </li>
-<li class="w3-hover-white">Rabeet Singh and Manoj K. Harbola, "Study of adiabatic connections in density functional theory for 2-electron spherical systems." In: <a class="w3-text-blue" href="http://onlinelibrary.wiley.com/doi/10.1002/qua.25344/full">Int. J. Quantum Chem. 117, 25344(2017)</a> </li>
-<li class="w3-hover-white">Rabeet Singh and Manoj K. Harbola, "Improved Le Sech wavefunctions for two-electron atomic systems." In: <a class="w3-text-blue" href="http://www.sciencedirect.com/science/article/pii/S0009261415007290">Chem. Phys. Lett. 639, 248(2015)</a> </li>
-</ul>
-</div>
-</div>
-    
-
-    <!-- Right Column -->
-    <div class="w3-col m2">
-      <div class="w3-container w3-theme-l1 w3-card w3-round w3-center">
-          <button onclick="myFunction('Demo1')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="w3-margin-right"></i>Collaborators</button>
-          <div id="Demo1" class="w3-hide">
-		  <a class="w3-bar-item w3-button w3-hover-black w3-text-blue" href="http://home.iitk.ac.in/~mkh/">Prof. Manoj Kumar Harbola</a> </br>
-      <a  class="w3-bar-item w3-button w3-hover-black w3-text-blue" href="http://www.physics.iisc.ac.in/~mjain/">Prof. Manish Jain</a> 
-      <a  class="w3-bar-item w3-button w3-hover-black w3-text-blue" href="http://www.niser.ac.in/~psamal">Dr. Prasanjit Samal</a> </br>
-      <a  class="w3-bar-item w3-button w3-hover-black w3-text-blue" href="https://www.rrcat.gov.in/hrd/ts/member.html">Dr. Arup Banerjee</a> 
-	</div>
+<div class="container py-5">
+  <div class="row g-4">
+    <!-- Left column -->
+    <div class="col-md-6">
+      <div class="row g-4">
+        <div class="col-12">
+          <div class="feature-card">
+            <h5 class="feature-title">Density Functional Theory</h5>
+            <div class="feature-text">Adiabatic connection, inversion problems, Levy-Perdew-Sahni equation</div>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="feature-card">
+            <h5 class="feature-title">Confined Systems</h5>
+            <div class="feature-text">Confined atomic systems, Exchange-Correlation functional for confined systems</div>
+          </div>
+        </div>
       </div>
-      <br>
-    <!-- End Right Column -->
     </div>
-    
-  <!-- End Grid -->
+
+    <!-- Right column -->
+    <div class="col-md-6">
+      <div class="row g-4">
+        <div class="col-12">
+          <div class="feature-card">
+            <h5 class="feature-title">Electronic Structure Theory</h5>
+            <div class="feature-text">Quantum Mechanical Methods for few electron systems</div>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="feature-card">
+            <h5 class="feature-title">Computational Material Science</h5>
+            <div class="feature-text">Performance of ab-initio methods for computing properties of functional materials</div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  
-<!-- End Page Container -->
 </div>
-<br>
 
-<!-- Footer -->
-<footer class="w3-container w3-theme-d3 w3-padding-16">
-  <i>Created by Rabeet Singh</i>
+
+<div id="singleImageCarousel" class="carousel slide" data-bs-ride="carousel" style="padding: 10px">
+  <!-- Indicators (optional) -->
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#singleImageCarousel" data-bs-slide-to="0"
+            class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#singleImageCarousel" data-bs-slide-to="1"
+            aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#singleImageCarousel" data-bs-slide-to="2"
+            aria-label="Slide 3"></button>
+    <button type="button" data-bs-target="#singleImageCarousel" data-bs-slide-to="3"
+            aria-label="Slide 4"></button>
+    <button type="button" data-bs-target="#singleImageCarousel" data-bs-slide-to="4"
+            aria-label="Slide 5"></button>
+  </div>
+
+  <!-- Slides -->
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="./dk_epjd.png"
+           class="d-block w-100"
+            style="height:300px; object-fit:contain"
+           alt="Slide 1">
+    </div>
+    <div class="carousel-item">
+      <img src="./dk_epjd2.png"
+           class="d-block w-100"
+            style="height:300px; object-fit:contain"
+           alt="Slide 2">
+    </div>
+    <div class="carousel-item">
+      <img src="./rs_jcp1.png"
+           class="d-block w-100"
+            style="height:300px; object-fit:contain"
+           alt="Slide 3">
+    </div>
+    <div class="carousel-item">
+      <img src="./rs_jcp2.png"
+           class="d-block w-100"
+            style="height:300px; object-fit:contain"
+           alt="Slide 4">
+    </div>
+    <div class="carousel-item">
+      <img src="./rs_jcp3.png"
+           class="d-block w-100"
+            style="height:300px; object-fit:contain"
+           alt="Slide 5">
+    </div>
+  </div>
+
+  <!-- Controls -->
+  <button class="carousel-control-prev" type="button"
+          data-bs-target="#singleImageCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button"
+          data-bs-target="#singleImageCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+          </div>
+        </div>
+      </div>
+    </div> 
+   <!-- row -->
+
+  </div>
+</section>
+
+
+<!-- MAIN CONTENT SECTIONS -->
+<section class="pb-5">
+  <div class="container">
+    <div class="row g-4">
+      <!-- Left column: PhD + Collaborators -->
+      <div class="col-lg-3">
+
+        <!-- Resource links -->
+        <div class="card card-soft">
+          <div class="card-header bg-transparent border-0 pb-0">
+            <div class="section-title">Resources</div>
+            <div class="section-subtitle">Databases · Codes · Tools</div>
+          </div>
+          <div class="card-body pt-3 small">
+            <div class="mb-2 fw-semibold text-info"><i class="fa-solid fa-database me-2"></i>Databases</div>
+            <ul class="list-unstyled mb-3">
+              <li><a href="https://www.chemie.uni-bonn.de/pctc/mulliken-center/software/GMTKN/gmtkn" target="_blank" rel="noopener">GMTKN (Grimme)</a></li>
+              <li><a href="https://materialsproject.org" target="_blank" rel="noopener">The Materials Project</a></li>
+              <li><a href="https://comp.chem.umn.edu/db/" target="_blank" rel="noopener">Minnesota Database</a></li>
+              <li><a href="http://www.begdb.com/" target="_blank" rel="noopener">BEGDB</a></li>
+            </ul>
+            <div class="mb-2 fw-semibold text-info"><i class="fa-solid fa-code me-2"></i>Codes & plotting</div>
+            <ul class="list-unstyled mb-3">
+              <li><a href="https://wiki.fysik.dtu.dk/ase/" target="_blank" rel="noopener">Atomic Simulation Environment</a></li>
+              <li><a href="http://www.gnuplot.info/" target="_blank" rel="noopener">Gnuplot</a></li>
+              <li><a href="http://pgfplots.sourceforge.net/gallery.html" target="_blank" rel="noopener">PGFPlots Gallery</a></li>
+            </ul>
+            <div class="mb-2 fw-semibold text-info"><i class="fa-solid fa-graduation-cap me-2"></i>Programming</div>
+            <ul class="list-unstyled mb-0">
+              <li><a href="http://fortranwiki.org/fortran/show/Tutorials" target="_blank" rel="noopener">Fortran Tutorials</a></li>
+              <li><a href="https://www.w3schools.com/" target="_blank" rel="noopener">HTML/CSS Basics</a></li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Right column: Teaching, Activities, Publications -->
+      <div class="col-lg-9">
+
+<section id="publications" class="py-4">
+  <div class="container">
+    <div class="row mb-3">
+      <div class="col">
+        <h2 class="h4 border-bottom pb-2">Selected Publications</h2>
+      </div>
+    </div>
+
+<div class="list-group list-group-numbered">
+  <span href="#"
+     class="list-group-item list-group-item-action d-flex justify-content-between align-items-start">
+    <div class="ms-2 me-auto">
+      <div class="fw-semibold">
+        Accurate effective potential for density amplitude and the corresponding Kohn–Sham exchange–correlation potential calculated from approximate densities.
+      </div>
+      <div class="small text-muted">
+        Ashish Kumar, R. Singh, and M. K. Harbola
+      </div>
+      <div class="small">
+        <span class="text-muted">J. Phys. B: At. Mol. Opt. Phys</span>,
+        <span class="text-muted">Vol. 52(3), pp. 123–134</span>
+      </div>
+      <div class="small mt-1">
+        <span class="link-primary me-2"> <a href="">DOI</a> </span>
+        <span class="link-secondary"><a href="">PDF</a></span>
+      </div>
+    </div>
+    <div class="text-end">
+      <span class="badge bg-primary mb-1">2024</span>
+      <div><span class="badge bg-light text-dark border">J. Phys. B: At. Mol. Opt. Phys</span></div>
+    </div>
+  </span>
+
+  <span href="#"
+     class="list-group-item list-group-item-action d-flex justify-content-between align-items-start">
+    <div class="ms-2 me-auto">
+      <div class="fw-semibold">
+        Accurate effective potential for density amplitude and the corresponding Kohn–Sham exchange–correlation potential calculated from approximate densities.
+      </div>
+      <div class="small text-muted">
+        Ashish Kumar, R. Singh, and M. K. Harbola
+      </div>
+      <div class="small">
+        <span class="text-muted">J. Phys. B: At. Mol. Opt. Phys</span>,
+        <span class="text-muted">Vol. 52(3), pp. 123–134</span>
+      </div>
+      <div class="small mt-1">
+        <span class="link-primary me-2"> <a href="">DOI</a> </span>
+        <span class="link-secondary"><a href="">PDF</a></span>
+      </div>
+    </div>
+    <div class="text-end">
+      <span class="badge bg-primary mb-1">2024</span>
+      <div><span class="badge bg-light text-dark border">J. Phys. B: At. Mol. Opt. Phys</span></div>
+    </div>
+  </span>
+  <!-- repeat more <a> items... -->
+</div>
+  </div>
+</section>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="py-3 mt-4">
+  <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center small">
+    <div>© <span id="year"></span> Rabeet Singh · Department of Physics, Banaras Hindu University</div>
+    <div>Built with <a href="https://getbootstrap.com/" target="_blank" rel="noopener">Bootstrap&nbsp;5</a></div>
+  </div>
 </footer>
 
-<footer class="w3-container w3-theme-d5">
-  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
-</footer>
- 
+<!-- Bootstrap JS bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-// Accordion
-function myFunction(id) {
-  var x = document.getElementById(id);
-  if (x.className.indexOf("w3-show") == -1) {
-    x.className += " w3-show";
-    x.previousElementSibling.className += " w3-theme-d1";
-  } else { 
-    x.className = x.className.replace("w3-show", "");
-    x.previousElementSibling.className = 
-    x.previousElementSibling.className.replace(" w3-theme-d1", "");
-  }
-}
-
-// Used to toggle the menu on smaller screens when clicking on the menu button
-function openNav() {
-  var x = document.getElementById("navDemo");
-  if (x.className.indexOf("w3-show") == -1) {
-    x.className += " w3-show";
-  } else { 
-    x.className = x.className.replace(" w3-show", "");
-  }
-}
+  document.getElementById('year').textContent = new Date().getFullYear();
 </script>
-
 </body>
-</html> 
-
+</html>
 
