@@ -2,470 +2,343 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Rabeet Singh | Electronic Structure & Materials</title>
+  <title>QUEST Lab | Rabeet Singh · Electronic Structure & Materials</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="keywords" content="Rabeet Singh, density functional theory, electronic structure, computational materials, physics, BHU">
+  <meta name="keywords" content="Rabeet Singh, QUEST Lab, density functional theory, electronic structure, computational materials, physics, BHU">
 
-  <!-- Bootstrap 5 CSS -->
+  <!-- Bootstrap 5 CSS & Font Awesome -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-  <!-- MathJax (optional if you show equations) -->
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script id="MathJax-script" async
-          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-<style>
-  body{
-    font-family: system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
-    background:#007399;          /* slightly darker light gray for page */
-    color:#111827;               /* near-black text */
-  }
-  a{color:#0d6efd}
-  a:hover{color:#0b5ed7}
+  <!-- MathJax -->
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
-  #publications .fw-semibold {
-    font-size: 0.98rem;
-  }
+  <style>
+    html {
+      scroll-padding-top: 85px;
+    }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: #007399;
+      color: #111827;
+    }
+    a { color: #0284c7; text-decoration: none; }
+    a:hover { color: #0369a1; text-decoration: underline; }
 
-  #publications .list-group-item {
-    border-radius: .35rem;
-    margin-bottom: .35rem;
-    transition: background-color .15s ease, box-shadow .15s ease, transform .1s ease;
-  }
-  #publications .list-group-item:hover {
-    background-color: #f8f9fa; /* light gray */
-    box-shadow: 0 .15rem .6rem rgba(0, 0, 0, 0.06);
-    transform: translateY(-1px);
-  }
+    /* Constrained Desktop Width (adjust 1280px as needed) */
+    .page-container {
+      max-width: 1500px;
+    }
 
+    /* Navbar */
+    .navbar-custom {
+      background-color: #0f172a;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    }
+    .navbar-logo-wrap {
+      width: 42px;
+      height: 42px;
+      background: #ffffff;
+      border-radius: 50%;
+      padding: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .navbar-logo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    .navbar-custom .nav-link {
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      color: #e2e8f0;
+    }
+    .navbar-custom .nav-link:hover {
+      color: #38bdf8;
+    }
 
-.carousel-item .card-title{
-  font-size:.95rem;
-}
-.carousel-item .card-img-top{
-  height:160px;
-  object-fit:cover;
-}
+    /* Main Wrapper & Cards */
+    .main-wrapper {
+      padding: 92px 0 44px;
+    }
+    .card-soft {
+      background: #ffffff;
+      border: 1px solid #d1d5db;
+      box-shadow: 0 12px 28px rgba(15, 23, 42, 0.1);
+    }
 
-  /* Navbar: white with dark text for max readability */
-  .navbar{
-    background:white;
-    border-bottom:1px solid #d1d5db;
-  }
-  .navbar-brand span{
-    font-weight:600;
-    letter-spacing:.04em;
-    color:#111827;
-  }
-  .nav-link{
-    font-weight:500;
-    letter-spacing:.03em;
-    color:#374151 !important;
-  }
-  .nav-link:hover{
-    color:#111827 !important;
-  }
+    /* Empty / Future Placeholder Card */
+    .card-placeholder {
+      background: rgba(255, 255, 255, 0.92);
+      border: 2px dashed #94a3b8;
+      box-shadow: 0 6px 16px rgba(15, 23, 42, 0.06);
+      min-height: 155px;
+    }
 
-  /* Hero/Profile section */
-  .hero-section{
-    padding:120px 0 80px;
-  }
-  .hero-card{
-    background:#ffffff;
-    border:1px solid #d1d5db;
-    box-shadow:0 16px 30px rgba(15,23,42,.08);
-  }
-  .hero-avatar{
-    width:140px;
-    height:140px;
-    border-radius:50%;
-    object-fit:cover;
-    box-shadow:0 8px 20px rgba(15,23,42,.18);
-    border:3px solid #e5e7eb;
-  }
-  .hero-name{
-    font-size:1.9rem;
-    font-weight:700;
-    color:#111827;
-  }
-  .hero-title{
-    font-size:1.05rem;
-    text-transform:uppercase;
-    letter-spacing:.15em;
-    color:#4b5563;
-  }
-  .hero-badge{
-    font-size:.8rem;
-    border-radius:999px;
-    padding:4px 10px;
-    background:#dbeafe;
-    border:1px solid #93c5fd;
-    color:#1d4ed8;
-  }
+    /* Profile Avatar */
+    .hero-avatar {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: top center;
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.18);
+      border: 3px solid #e5e7eb;
+    }
+    .hero-badge {
+      display: inline-block;
+      font-size: 0.76rem;
+      border-radius: 999px;
+      padding: 4px 10px;
+      background: #e0f2fe;
+      border: 1px solid #7dd3fc;
+      color: #0369a1;
+    }
 
-  .tag-pill{
-    display:inline-block;
-    border-radius:999px;
-    padding:6px 12px;
-    margin:3px;
-    font-size:.82rem;
-    background:#e0f2fe;
-    border:1px solid #93c5fd;
-    color:#1d4ed8;
-  }
+    /* Student Avatars */
+    .student-avatar {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: top center;
+      flex-shrink: 0;
+      border: 2px solid #e2e8f0;
+    }
+    .list-hover-item {
+      transition: transform 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease;
+      border-radius: 0.75rem;
+    }
+    .list-hover-item:hover {
+      background-color: #f1f5f9;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 18px rgba(15, 23, 42, 0.08);
+      text-decoration: none;
+    }
 
-  /* Section headers */
-  .section-title{
-    font-size:1.4rem;
-    font-weight:600;
-    letter-spacing:.06em;
-    text-transform:uppercase;
-    color:#111827;
-  }
-  .section-subtitle{
-    font-size:.9rem;
-    color:#4b5563;
-  }
+    /* Section Headers */
+    .section-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #0f172a;
+    }
+    .section-subtitle {
+      font-size: 0.82rem;
+      color: #64748b;
+    }
 
-  /* Generic soft card */
-  .card-soft{
-    background:#ffffff;
-    border:1px solid #d1d5db;
-    box-shadow:0 10px 24px rgba(15,23,42,.06);
-  }
+    /* Slider */
+    .carousel-slide-img {
+      height: 260px;
+      object-fit: contain;
+    }
 
-  /* PhD / collaborator list */
-  .avatar-sm{
-    width:56px;
-    height:56px;
-    border-radius:50%;
-    object-fit:cover;
-  }
-  .list-hover-item{
-    transition:transform .18s ease,box-shadow .18s ease,background .18s ease;
-    border-radius:.75rem;
-  }
-  .list-hover-item:hover{
-    background:#f3f4f6;
-    transform:translateY(-2px);
-    box-shadow:0 10px 24px rgba(15,23,42,.08);
-  }
+    /* Research Feature Cards */
+    .feature-card {
+      background-color: #f8fafc;
+      border-radius: 8px;
+      padding: 0.9rem 1rem 0.9rem 1.2rem;
+      height: 100%;
+      position: relative;
+      transition: all 0.25s ease;
+    }
+    .feature-card::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 12px;
+      bottom: 12px;
+      width: 5px;
+      border-radius: 4px;
+      background-color: #ef4444;
+      transition: background-color 0.25s ease;
+    }
+    .feature-card:hover {
+      background-color: #ffffff;
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+      transform: translateY(-3px);
+    }
+    .feature-card:hover::before {
+      background-color: #f97316;
+    }
+    .feature-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #0f172a;
+    }
+    .feature-text {
+      font-size: 0.86rem;
+      color: #475569;
+    }
 
-  /* Publications */
-  .pub-year{
-    font-size:.8rem;
-    text-transform:uppercase;
-    letter-spacing:.16em;
-    color:#6b7280;
-  }
-  .pub-title{
-    font-weight:600;
-    color:#111827;
-  }
-  .pub-journal{
-    font-size:.9rem;
-    color:#1d4ed8;
-  }
+    /* Timeline / Activity Items in Right Sidebar */
+    .activity-item {
+      border-left: 3px solid #0284c7;
+      padding-left: 0.75rem;
+    }
 
-  /* Footer */
-  footer{
-    border-top:1px solid #d1d5db;
-    background:#ffffff;
-    color:#4b5563;
-  }
-.feature-card {
-  background-color: #f5f7fb;
-  border: none;
-  border-radius: 8px;
-  padding: 0.5rem 1.0rem;
-  height: 100%;
-  position: relative;
-  transition: all 0.25s ease;   /* smooth hover */
-}
+    /* Publications */
+    #publications .list-group-item {
+      border-radius: 0.5rem;
+      margin-bottom: 0.5rem;
+      transition: background-color 0.15s ease, box-shadow 0.15s ease, transform 0.1s ease;
+    }
+    #publications .list-group-item:hover {
+      background-color: #f8fafc;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+      transform: translateY(-1px);
+    }
 
-.feature-card::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 10px;
-  bottom: 10px;
-  width: 6px;
-  border-radius: 4px;
-  background-color: #f44336;
-  transition: background-color 0.25s ease;
-}
-
-.feature-card:hover {
-  background-color: #ffffff;
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);  /* hover shadow */
-  transform: translateY(-4px);                  /* small lift */
-}
-
-.feature-card:hover::before {
-  background-color: #ff7043;                    /* lighter red on hover */
-}
-  
-</style>
-
+    /* Footer */
+    footer {
+      border-top: 1px solid #d1d5db;
+      background: #ffffff;
+      color: #4b5563;
+    }
+  </style>
 </head>
 <body>
 
 <!-- NAVBAR -->
-<nav class="navbar navbar-expand-lg border-bottom border-secondary fixed-top">
-  <div class="container">
-    <a class="navbar-brand d-flex align-items-center" href="#">
-      <img src="images/logo.png" alt="BHU" class="me-2 rounded-circle" style="width:42px;height:42px;object-fit:cover;">
+<nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top shadow-sm">
+  <div class="container page-container">
+    <a class="navbar-brand d-flex align-items-center text-decoration-none" href="#">
+      <div class="navbar-logo-wrap me-2 shadow-sm">
+        <img src="images/logo.png" alt="Banaras Hindu University Logo">
+      </div>
+      <div>
+        <div class="fw-semibold text-white lh-1">QUEST Lab <span class="d-none d-md-inline fw-normal text-light opacity-75">(QUantum Electronic Structure &amp; Theory)</span></div>
+        <small class="text-info" style="font-size: 0.74rem;">Dept. of Physics · Banaras Hindu University</small>
+      </div>
     </a>
+
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
             aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+
     <div class="collapse navbar-collapse" id="mainNav">
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <li class="nav-item"><a class="nav-link" href="#research">Research</a></li>
         <li class="nav-item"><a class="nav-link" href="#students">PhD Students</a></li>
         <li class="nav-item"><a class="nav-link" href="#publications">Publications</a></li>
+        <li class="nav-item"><a class="nav-link" href="#activities">Activities</a></li>
+        <li class="nav-item"><a class="nav-link" href="#teaching">Teaching</a></li>
       </ul>
     </div>
   </div>
 </nav>
 
-<!-- HERO / PROFILE -->
-<section class="hero-section">
-  <div class="container">
-    <div class="row g-4 align-items-stretch">
-      <!-- Profile -->
-      <div class="col-lg-3">
-        <div class="card hero-card h-100 p-4">
+<!-- 3-COLUMN MAIN LAYOUT -->
+<main class="main-wrapper">
+  <div class="container page-container">
+    <div class="row g-3 g-xl-4 align-items-start">
+
+      <!-- ============================================================== -->
+      <!-- LEFT COLUMN (Width: 3 of 12 on xl): Profile, Students, Resources -->
+      <!-- ============================================================== -->
+      <div class="col-12 col-lg-4 col-xl-3 d-flex flex-column gap-3 gap-xl-4">
+
+        <!-- Profile & PhD Students Card -->
+        <div class="card card-soft p-3 p-xl-4">
           <div class="text-center mb-3">
-            <img src="images/rs.jpeg" alt="Rabeet Singh" class="hero-avatar mb-4">
-            <h4>Rabeet Singh</h4>
+            <img src="images/rs.jpeg" alt="Rabeet Singh" class="hero-avatar mb-3">
+            <h5 class="fw-bold mb-2">Rabeet Singh</h5>
             <span class="hero-badge">
-              <i class="fa-solid fa-atom me-1"></i> Assistant Professor · Department of Physics
+              <i class="fa-solid fa-atom me-1"></i> Assistant Professor · Physics
             </span>
           </div>
-          <div class="mb-3 small text-secondary">
-            <i class="fa-solid fa-location-dot me-2 text-info"></i>Banaras Hindu University, Varanasi, India
-          </div>
-          <div class="mb-2 small">
-            <i class="fa-solid fa-envelope me-2 text-info"></i>
-            <a href="mailto:rabeet@bhu.ac.in">rabeet@bhu.ac.in</a>
-          </div>
-          <div class="mb-4 small">
-            <i class="fa-solid fa-globe me-2 text-info"></i>
-            <a href="https://bhu.ac.in" target="_blank" rel="noopener">bhu.ac.in</a>
-          </div>
-          <div class="mb-4 small">
-            <a href="http://orcid.org/0000-0001-5657-057X" target="_blank" rel="noopener">
-              <i class="fa-brands fa-orcid me-2 text-info"></i>ORCID
-            </a>
-          </div>
 
-          <div class="mb-4 small">
-            <a href="https://scholar.google.co.in/citations?user=8EUlz1QAAAAJ&hl=en" target="_blank" rel="noopener"
-               >
-              <i class="fa-brands fa-google me-2 text-info"></i>Google Scholar
-            </a>
-          </div>
-          <div class="mb-4 small">
-            <a href="https://www.researchgate.net/profile/Rabeet_Singh" target="_blank" rel="noopener"
-               >
-              <i class="fa-brands fa-researchgate me-2 text-info"></i>ResearchGate
-            </a>
-          </div>
-          <div class="mb-4 small">
-            <a href="https://github.com/rabeetgh" target="_blank" rel="noopener">
-              <i class="fa-brands fa-github me-2 text-info"></i>GitHub
-            </a>
-          </div>
+          <ul class="list-unstyled small mb-3">
+            <li class="mb-2 text-secondary">
+              <i class="fa-solid fa-location-dot me-2 text-info fa-fw"></i>Banaras Hindu University, Varanasi, India
+            </li>
+            <li class="mb-2">
+              <i class="fa-solid fa-envelope me-2 text-info fa-fw"></i>
+              <a href="mailto:rabeet@bhu.ac.in">rabeet@bhu.ac.in</a>
+            </li>
+            <li class="mb-2">
+              <i class="fa-solid fa-globe me-2 text-info fa-fw"></i>
+              <a href="https://bhu.ac.in" target="_blank" rel="noopener">bhu.ac.in</a>
+            </li>
+            <li class="mb-2">
+              <i class="fa-brands fa-orcid me-2 text-info fa-fw"></i>
+              <a href="http://orcid.org/0000-0001-5657-057X" target="_blank" rel="noopener">ORCID</a>
+            </li>
+            <li class="mb-2">
+              <i class="fa-brands fa-google me-2 text-info fa-fw"></i>
+              <a href="https://scholar.google.co.in/citations?user=8EUlz1QAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>
+            </li>
+            <li class="mb-2">
+              <i class="fa-brands fa-researchgate me-2 text-info fa-fw"></i>
+              <a href="https://www.researchgate.net/profile/Rabeet_Singh" target="_blank" rel="noopener">ResearchGate</a>
+            </li>
+            <li>
+              <i class="fa-brands fa-github me-2 text-info fa-fw"></i>
+              <a href="https://github.com/rabeetgh" target="_blank" rel="noopener">GitHub</a>
+            </li>
+          </ul>
 
-          <div class="border-top border-secondary pt-3 small text-secondary">
-          <div class="card-header bg-transparent border-0 pb-0">
-            <div id="students" class="section-title">PhD Students</div>
-            <div class="section-subtitle">Current supervision</div>
-          </div>
-          <div class="card-body pt-3">
+          <!-- PhD Students -->
+          <div id="students" class="border-top pt-3">
+            <div class="section-title fs-6">PhD Students</div>
+            <div class="section-subtitle mb-2">Current supervision</div>
+
             <div class="list-group list-group-flush">
-              <a href="#" class="list-group-item bg-transparent  border-0 px-0 py-2 list-hover-item">
+              <a href="#" class="list-group-item bg-transparent border-0 px-1 py-2 list-hover-item">
                 <div class="d-flex align-items-center">
-                  <img src="images/deepak.jpg" alt="Deepak Singh" class="avatar-sm me-3">
+                  <img src="images/deepak.jpg" alt="Deepak Singh" class="student-avatar me-2">
                   <div>
-                    <div class="fw-semibold">Deepak Singh</div>
-                    <div class="small text-secondary">
+                    <div class="fw-semibold text-dark small">Deepak Singh</div>
+                    <div class="text-secondary lh-sm" style="font-size: 0.78rem;">
                       Machine Learning for Electronic Structure Problems
                     </div>
                   </div>
                 </div>
               </a>
-              <a href="#" class="list-group-item bg-transparent border-0 px-2 py-2 list-hover-item">
+
+              <a href="#" class="list-group-item bg-transparent border-0 px-1 py-2 list-hover-item">
                 <div class="d-flex align-items-center">
-                  <img src="images/binoy_mahto.jpg" alt="Binoy Mahto" class="rounded px-1 w-25">
+                  <img src="images/binoy_mahto.jpg" alt="Binoy Mahto" class="student-avatar me-2">
                   <div>
-                    <div class="fw-semibold">Binoy Mahto</div>
-                    <div class="small text-secondary">
+                    <div class="fw-semibold text-dark small">Binoy Mahto</div>
+                    <div class="text-secondary lh-sm" style="font-size: 0.78rem;">
                       Electronic Structure Theory of Quantum Confined Systems
                     </div>
                   </div>
                 </div>
               </a>
-          </div>
-        </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Research summary & topics -->
-      <div class="col-lg-9">
-        <div class="card card-soft h-100 p-4">
-          <div class="d-flex justify-content-between align-items-baseline mb-3">
-            <div>
-              <div class="section-title" id="research">Research</div>
-              <!--<div class="section-subtitle">Electronic structure theory · Density functional theory · Computational materials</div>-->
             </div>
           </div>
-
-<div class="container py-5">
-  <div class="row g-4">
-    <!-- Left column -->
-    <div class="col-md-6">
-      <div class="row g-4">
-        <div class="col-12">
-          <div class="feature-card">
-            <h5 class="feature-title">Density Functional Theory </h5>
-            <div class="feature-text">Adiabatic connection, inversion problems, exchange-correlation functionals</div>
-          </div>
         </div>
-        <div class="col-12">
-          <div class="feature-card">
-            <h5 class="feature-title">Confined Systems</h5>
-            <div class="feature-text">Confined atomic systems, Exchange-Correlation functional for confined systems</div>
-          </div>
-        </div>
-      </div>
-    </div>
 
-    <!-- Right column -->
-    <div class="col-md-6">
-      <div class="row g-4">
-        <div class="col-12">
-          <div class="feature-card">
-            <h5 class="feature-title">Electronic Structure Theory</h5>
-            <div class="feature-text">Quantum Mechanical Methods for few electron systems</div>
-          </div>
-        </div>
-        <div class="col-12">
-          <div class="feature-card">
-            <h5 class="feature-title">Computational Material Science</h5>
-            <div class="feature-text">Density functional theory for studying properties of materials</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+        <!-- Resources Card -->
+        <div class="card card-soft p-3 p-xl-4">
+          <div class="section-title">Resources</div>
+          <div class="section-subtitle mb-3">Databases · Codes · Tools</div>
 
-
-<div id="singleImageCarousel" class="carousel slide" data-bs-ride="carousel" style="padding: 10px">
-  <!-- Indicators (optional) -->
-  <div class="carousel-indicators">
-    <button type="button" data-bs-target="#singleImageCarousel" data-bs-slide-to="0"
-            class="active" aria-current="true" aria-label="Slide 1"></button>
-    <button type="button" data-bs-target="#singleImageCarousel" data-bs-slide-to="1"
-            aria-label="Slide 2"></button>
-    <button type="button" data-bs-target="#singleImageCarousel" data-bs-slide-to="2"
-            aria-label="Slide 3"></button>
-    <button type="button" data-bs-target="#singleImageCarousel" data-bs-slide-to="3"
-            aria-label="Slide 4"></button>
-    <button type="button" data-bs-target="#singleImageCarousel" data-bs-slide-to="4"
-            aria-label="Slide 5"></button>
-  </div>
-
-  <!-- Slides -->
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="images/dk_epjd.png"
-           class="d-block w-100"
-            style="height:300px; object-fit:contain"
-           alt="Slide 1">
-    </div>
-    <div class="carousel-item">
-      <img src="images/dk_epjd2.png"
-           class="d-block w-100"
-            style="height:300px; object-fit:contain"
-           alt="Slide 2">
-    </div>
-    <div class="carousel-item">
-      <img src="images/rs_jcp1.png"
-           class="d-block w-100"
-            style="height:300px; object-fit:contain"
-           alt="Slide 3">
-    </div>
-    <div class="carousel-item">
-      <img src="images/rs_jcp2.png"
-           class="d-block w-100"
-            style="height:300px; object-fit:contain"
-           alt="Slide 4">
-    </div>
-    <div class="carousel-item">
-      <img src="images/rs_jcp3.png"
-           class="d-block w-100"
-            style="height:300px; object-fit:contain"
-           alt="Slide 5">
-    </div>
-  </div>
-
-  <!-- Controls -->
-  <button class="carousel-control-prev" type="button"
-          data-bs-target="#singleImageCarousel" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button"
-          data-bs-target="#singleImageCarousel" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-</div>
-
-          </div>
-        </div>
-      </div>
-    </div> 
-   <!-- row -->
-
-  </div>
-</section>
-
-
-<!-- MAIN CONTENT SECTIONS -->
-<section class="pb-5">
-  <div class="container">
-    <div class="row g-4">
-      <!-- Left column: PhD + Collaborators -->
-      <div class="col-lg-3">
-
-        <!-- Resource links -->
-        <div class="card card-soft">
-          <div class="card-header bg-transparent border-0 pb-0">
-            <div class="section-title">Resources</div>
-            <div class="section-subtitle">Databases · Codes · Tools</div>
-          </div>
-          <div class="card-body pt-3 small">
-            <div class="mb-2 fw-semibold text-info"><i class="fa-solid fa-database me-2"></i>Databases</div>
+          <div class="small">
+            <div class="mb-1 fw-semibold text-info"><i class="fa-solid fa-database me-2"></i>Databases</div>
             <ul class="list-unstyled mb-3">
               <li><a href="https://www.chemie.uni-bonn.de/pctc/mulliken-center/software/GMTKN/gmtkn" target="_blank" rel="noopener">GMTKN (Grimme)</a></li>
               <li><a href="https://materialsproject.org" target="_blank" rel="noopener">The Materials Project</a></li>
               <li><a href="https://comp.chem.umn.edu/db/" target="_blank" rel="noopener">Minnesota Database</a></li>
               <li><a href="http://www.begdb.com/" target="_blank" rel="noopener">BEGDB</a></li>
             </ul>
-            <div class="mb-2 fw-semibold text-info"><i class="fa-solid fa-code me-2"></i>Codes & plotting</div>
+
+            <div class="mb-1 fw-semibold text-info"><i class="fa-solid fa-code me-2"></i>Codes &amp; Plotting</div>
             <ul class="list-unstyled mb-3">
               <li><a href="https://wiki.fysik.dtu.dk/ase/" target="_blank" rel="noopener">Atomic Simulation Environment</a></li>
               <li><a href="http://www.gnuplot.info/" target="_blank" rel="noopener">Gnuplot</a></li>
               <li><a href="http://pgfplots.sourceforge.net/gallery.html" target="_blank" rel="noopener">PGFPlots Gallery</a></li>
             </ul>
-            <div class="mb-2 fw-semibold text-info"><i class="fa-solid fa-graduation-cap me-2"></i>Programming</div>
+
+            <div class="mb-1 fw-semibold text-info"><i class="fa-solid fa-graduation-cap me-2"></i>Programming</div>
             <ul class="list-unstyled mb-0">
               <li><a href="http://fortranwiki.org/fortran/show/Tutorials" target="_blank" rel="noopener">Fortran Tutorials</a></li>
               <li><a href="https://www.w3schools.com/" target="_blank" rel="noopener">HTML/CSS Basics</a></li>
@@ -475,91 +348,219 @@
 
       </div>
 
-      <!-- Right column: Teaching, Activities, Publications -->
-      <div class="col-lg-9">
+      <!-- ============================================================== -->
+      <!-- MIDDLE COLUMN (Width: 6 of 12 on xl): Slider, Research, Papers -->
+      <!-- ============================================================== -->
+      <div class="col-12 col-lg-8 col-xl-6 d-flex flex-column gap-3 gap-xl-4">
 
-<section id="publications" class="py-4">
-  <div class="container">
-    <div class="row mb-3">
-      <div class="col">
-        <h2 class="h4 border-bottom pb-2">Selected Publications</h2>
-      </div>
-    </div>
+        <!-- Slider + Research Card -->
+        <div class="card card-soft p-3 p-xl-4">
 
-<div class="list-group list-group-numbered">
-  <span href="#"
-     class="list-group-item list-group-item-action d-flex justify-content-between align-items-start">
-    <div class="ms-2 me-auto">
-      <div class="fw-semibold">
-        Accurate effective potential for density amplitude and the corresponding Kohn–Sham exchange–correlation potential calculated from approximate densities.
-      </div>
-      <div class="small text-muted">
-        Ashish Kumar, R. Singh, and M. K. Harbola
-      </div>
-      <div class="small">
-        <span class="text-muted">J. Phys. B: At. Mol. Opt. Phys</span>,
-        <span class="text-muted">Vol. 52(3), pp. 123–134</span>
-      </div>
-      <div class="small mt-1">
-        <span class="link-primary me-2"> <a href="">DOI</a> </span>
-        <span class="link-secondary"><a href="">PDF</a></span>
-      </div>
-    </div>
-    <div class="text-end">
-      <span class="badge bg-primary mb-1">2024</span>
-      <div><span class="badge bg-light text-dark border">J. Phys. B: At. Mol. Opt. Phys</span></div>
-    </div>
-  </span>
+          <!-- Slider at Top -->
+          <div id="singleImageCarousel" class="carousel carousel-dark slide bg-light rounded-3 border mb-4 p-2" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#singleImageCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#singleImageCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#singleImageCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+              <button type="button" data-bs-target="#singleImageCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+              <button type="button" data-bs-target="#singleImageCarousel" data-bs-slide-to="4" aria-label="Slide 5"></button>
+            </div>
 
-  <span href="#"
-     class="list-group-item list-group-item-action d-flex justify-content-between align-items-start">
-    <div class="ms-2 me-auto">
-      <div class="fw-semibold">
-        Accurate effective potential for density amplitude and the corresponding Kohn–Sham exchange–correlation potential calculated from approximate densities.
-      </div>
-      <div class="small text-muted">
-        Ashish Kumar, R. Singh, and M. K. Harbola
-      </div>
-      <div class="small">
-        <span class="text-muted">J. Phys. B: At. Mol. Opt. Phys</span>,
-        <span class="text-muted">Vol. 52(3), pp. 123–134</span>
-      </div>
-      <div class="small mt-1">
-        <span class="link-primary me-2"> <a href="">DOI</a> </span>
-        <span class="link-secondary"><a href="">PDF</a></span>
-      </div>
-    </div>
-    <div class="text-end">
-      <span class="badge bg-primary mb-1">2024</span>
-      <div><span class="badge bg-light text-dark border">J. Phys. B: At. Mol. Opt. Phys</span></div>
-    </div>
-  </span>
-  <!-- repeat more <a> items... -->
-</div>
-  </div>
-</section>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="images/dk_epjd.png" class="d-block w-100 carousel-slide-img" alt="Slide 1">
+              </div>
+              <div class="carousel-item">
+                <img src="images/dk_epjd2.png" class="d-block w-100 carousel-slide-img" alt="Slide 2">
+              </div>
+              <div class="carousel-item">
+                <img src="images/rs_jcp1.png" class="d-block w-100 carousel-slide-img" alt="Slide 3">
+              </div>
+              <div class="carousel-item">
+                <img src="images/rs_jcp2.png" class="d-block w-100 carousel-slide-img" alt="Slide 4">
+              </div>
+              <div class="carousel-item">
+                <img src="images/rs_jcp3.png" class="d-block w-100 carousel-slide-img" alt="Slide 5">
+              </div>
+            </div>
 
+            <button class="carousel-control-prev" type="button" data-bs-target="#singleImageCarousel" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#singleImageCarousel" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+
+          <!-- Research Areas -->
+          <div id="research" class="mb-3">
+            <div class="section-title">Research</div>
+            <div class="section-subtitle">Electronic structure theory · Density functional theory · Computational materials</div>
+          </div>
+
+          <div class="row g-3">
+            <div class="col-md-6">
+              <div class="feature-card">
+                <h5 class="feature-title">Computational Quantum Physics and Few-Body Quantum Systems</h5>
+                <div class="feature-text">Numerical and theoretical investigation of quantum systems, including confined quantum systems, electron correlation, quantum dots, and few-body problems.</div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="feature-card">
+                <h5 class="feature-title">Computational Materials Science and Nanostructures</h5>
+                <div class="feature-text">Theoretical investigation of the electronic, structural, and physical properties of materials and nanoscale systems using computational methods.</div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="feature-card">
+                <h5 class="feature-title">Density Functional Theory and Electronic Structure Methods</h5>
+                <div class="feature-text">Development, implementation, and assessment of exchange-correlation functionals, Hartree–Fock methods, and other electronic structure approaches for atomic and molecular systems.</div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="feature-card">
+                <h5 class="feature-title">Numerical Methods and Scientific Computing</h5>
+                <div class="feature-text">Development of computational algorithms and high-precision numerical techniques, including finite-element methods, adaptive meshing, eigenvalue solvers, numerical integration, and high-performance scientific computing.</div>
+              </div>
+            </div>
+
+            <div class="col-12">
+              <div class="feature-card">
+                <h5 class="feature-title">Machine Learning for Quantum Physics and Electronic Structure</h5>
+                <div class="feature-text">Machine-learning-assisted exchange-correlation functionals, neural-network representations of quantum states and densities, surrogate models for electronic structure calculations, physics-informed machine learning, and data-driven approaches to quantum many-body problems.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Selected Publications Card -->
+        <div id="publications" class="card card-soft p-3 p-xl-4">
+          <div class="border-bottom pb-2 mb-3">
+            <div class="section-title">Selected Publications</div>
+          </div>
+
+          <div class="list-group list-group-numbered">
+            <div class="list-group-item d-flex justify-content-between align-items-start">
+              <div class="ms-2 me-3">
+                <div class="fw-semibold small">
+                  Accurate effective potential for density amplitude and the corresponding Kohn–Sham exchange–correlation potential calculated from approximate densities.
+                </div>
+                <div class="small text-muted">Ashish Kumar, R. Singh, and M. K. Harbola</div>
+                <div class="small text-muted">J. Phys. B: At. Mol. Opt. Phys, Vol. 52(3), pp. 123–134</div>
+                <div class="small mt-1">
+                  <a href="#" class="me-2">DOI</a>
+                  <a href="#" class="text-secondary">PDF</a>
+                </div>
+              </div>
+              <div class="text-end flex-shrink-0">
+                <span class="badge bg-primary mb-1">2024</span>
+                <div><span class="badge bg-light text-dark border">J. Phys. B</span></div>
+              </div>
+            </div>
+
+            <div class="list-group-item d-flex justify-content-between align-items-start">
+              <div class="ms-2 me-3">
+                <div class="fw-semibold small">
+                  Accurate effective potential for density amplitude and the corresponding Kohn–Sham exchange–correlation potential calculated from approximate densities.
+                </div>
+                <div class="small text-muted">Ashish Kumar, R. Singh, and M. K. Harbola</div>
+                <div class="small text-muted">J. Phys. B: At. Mol. Opt. Phys, Vol. 52(3), pp. 123–134</div>
+                <div class="small mt-1">
+                  <a href="#" class="me-2">DOI</a>
+                  <a href="#" class="text-secondary">PDF</a>
+                </div>
+              </div>
+              <div class="text-end flex-shrink-0">
+                <span class="badge bg-primary mb-1">2024</span>
+                <div><span class="badge bg-light text-dark border">J. Phys. B</span></div>
+              </div>
+            </div>
           </div>
         </div>
 
       </div>
+
+      <!-- ============================================================== -->
+      <!-- RIGHT COLUMN (Width: 3 of 12 on xl): Activities, Teaching, etc. -->
+      <!-- ============================================================== -->
+      <div class="col-12 col-lg-12 col-xl-3 d-flex flex-column gap-3 gap-xl-4">
+
+        <!-- Card 1: Recent Activities -->
+        <div id="activities" class="card card-soft p-3 p-xl-4">
+          <div class="section-title"><i class="fa-solid fa-bullhorn me-2 text-info"></i>Recent Activities</div>
+          <div class="section-subtitle mb-3">News · Talks · Updates</div>
+
+          <div class="d-flex flex-column gap-3 small">
+            <div class="activity-item">
+              <div class="text-muted fw-semibold" style="font-size: 0.78rem;">2026</div>
+              <div class="text-dark">....</div>
+            </div>
+            <div class="activity-item">
+              <div class="text-muted fw-semibold" style="font-size: 0.78rem;">2025</div>
+              <div class="text-dark">.....</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2: Teaching -->
+        <div id="teaching" class="card card-soft p-3 p-xl-4">
+          <div class="section-title"><i class="fa-solid fa-chalkboard-user me-2 text-info"></i>Teaching</div>
+          <div class="section-subtitle mb-3">Courses at Dept. of Physics, BHU</div>
+
+          <ul class="list-unstyled small mb-0 d-flex flex-column gap-2">
+            <li class="p-2 rounded bg-light border">
+              <div class="fw-semibold text-dark">Quantum Mechanics</div>
+              <div class="text-secondary" style="font-size: 0.78rem;">B.Sc. Physics, Vth Sem</div>
+            </li>
+            <li class="p-2 rounded bg-light border">
+              <div class="fw-semibold text-dark">Computational Physics</div>
+              <div class="text-secondary" style="font-size: 0.78rem;">B.Sc. Physics, IVth Sem</div>
+            </li>
+            <li class="p-2 rounded bg-light border">
+              <div class="fw-semibold text-dark">Computational Physics &amp; Programming</div>
+              <div class="text-secondary" style="font-size: 0.78rem;">M.Sc. Physics, Ist Sem</div>
+            </li>
+            <li class="p-2 rounded bg-light border">
+              <div class="fw-semibold text-dark">Solid State Physics</div>
+              <div class="text-secondary" style="font-size: 0.78rem;">M.Sc. Physics, IInd Sem</div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Card 3: Empty Placeholder Card (For Future Use) -->
+        <div class="card card-placeholder p-3 p-xl-4 d-flex flex-column justify-content-center">
+          <div class="section-title text-secondary"><i class="fa-regular fa-square-plus me-2"></i>Future Section 1</div>
+          <div class="section-subtitle mt-1">Reserved space (e.g., Open Positions, Projects, or Grants)</div>
+        </div>
+
+        <!-- Card 4: Empty Placeholder Card (For Future Use) -->
+        <div class="card card-placeholder p-3 p-xl-4 d-flex flex-column justify-content-center">
+          <div class="section-title text-secondary"><i class="fa-regular fa-square-plus me-2"></i>Future Section 2</div>
+          <div class="section-subtitle mt-1">Reserved space (e.g., Collaborators, Events, or Awards)</div>
+        </div>
+
+      </div>
+
     </div>
   </div>
-</section>
+</main>
 
 <!-- FOOTER -->
-<footer class="py-3 mt-4">
-  <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center small">
-    <div>© <span id="year"></span> Rabeet Singh · Department of Physics, Banaras Hindu University</div>
-    <div>Built with <a href="https://getbootstrap.com/" target="_blank" rel="noopener">Bootstrap&nbsp;5</a></div>
+<footer class="py-3 mt-2">
+  <div class="container page-container d-flex flex-column flex-md-row justify-content-between align-items-center small">
+    <div>© <span id="year"></span> QUEST Lab · Rabeet Singh · Department of Physics, Banaras Hindu University</div>
+    <div>Built with <a href="https://getbootstrap.com/" target="_blank" rel="noopener">Bootstrap 5</a></div>
   </div>
 </footer>
 
-<!-- Bootstrap JS bundle -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
 </script>
 </body>
 </html>
-
